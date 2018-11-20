@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Schemas;
 using Updater.Bolaget;
@@ -14,6 +15,7 @@ namespace Updater
                 .AddScoped<IWorker, Worker>()
                 .AddScoped<IBolagetSource<artiklar>, InventoryFileSource>()
                 .AddScoped<IDownloader<string>, BolagetFileDownloader>()
+                .AddScoped<IDeserializer, BolagetFilesDeserializer>()
                 .BuildServiceProvider();
 
             var worker = serviceCollection.GetService<IWorker>();
