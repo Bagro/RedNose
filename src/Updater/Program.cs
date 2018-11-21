@@ -13,7 +13,7 @@ namespace Updater
         {
             var serviceCollection = new ServiceCollection()
                 .AddScoped<IWorker, Worker>()
-                .AddScoped<IBolagetSource<artiklar>, InventoryFileSource>()
+                .AddScoped<IBolagetSource<artiklar>, RangeFileSource>()
                 .AddScoped<IDownloader<string>, BolagetFileDownloader>()
                 .AddScoped<IDeserializer, BolagetFilesDeserializer>()
                 .BuildServiceProvider();
