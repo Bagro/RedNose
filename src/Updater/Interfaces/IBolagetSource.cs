@@ -2,8 +2,8 @@ using System.Threading.Tasks;
 
 namespace Updater.Interfaces
 {
-    public interface IBolagetSource<T>
+    public interface IBolagetSource
     {
-        Task<T> GetData();
+        Task<T> GetData<T>(string url);
     }
 }
