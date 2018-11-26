@@ -1,6 +1,4 @@
-using System.IO;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 using Schemas;
 using Updater.Interfaces;
 
