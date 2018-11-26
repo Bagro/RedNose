@@ -8,14 +8,18 @@ namespace Updater
 {
     public class Worker : IWorker
     {
-        public Task DoWork()
-        {
-            var xmlSerializer = new XmlSerializer(typeof(artiklar));
+        private readonly IBolagetSource _bolagetSource;
 
-            var streamReader = new StreamReader("/Users/bagro/Downloads/systembolaget/Sortimentsfilen.xml");
-            var deserialize = xmlSerializer.Deserialize(streamReader);
-            
-            return Task.Factory.StartNew(()=> "");
+        public Worker(IBolagetSource bolagetSource)
+        {
+            _bolagetSource = bolagetSource;
+        }
+        
+        public async Task DoWork()
+        {
+            var artiklar = await _bolagetSource.GetData<artiklar>("https://www.systembolaget.se/api/assortment/products/xml");
+            var butikerOmbud = await _bolagetSource.GetData<ButikerOmbud>("https://www.systembolaget.se/api/assortment/stores/xml");
+            var butikArtikel = await _bolagetSource.GetData<ButikArtikel>("https://www.systembolaget.se/api/assortment/stock/xml");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Updater
 
             var worker = serviceCollection.GetService<IWorker>();
 
-            worker.DoWork();
+            worker.DoWork().Wait();
         }
     }
 }
