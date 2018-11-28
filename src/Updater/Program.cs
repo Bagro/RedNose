@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using Schemas;
 using Updater.Bolaget;
 using Updater.Interfaces;
 
@@ -16,6 +14,7 @@ namespace Updater
                 .AddScoped<IBolagetSource, BolagetFileSource>()
                 .AddScoped<IDownloader<string>, BolagetFileDownloader>()
                 .AddScoped<IDeserializer, BolagetFilesDeserializer>()
+                .AddAutoMapper()
                 .BuildServiceProvider();
 
             var worker = serviceCollection.GetService<IWorker>();
