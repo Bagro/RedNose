@@ -38,6 +38,14 @@ namespace Updater.Profiles
                 .ForMember(dest => dest.PricePerLitre, opt => opt.MapFrom(src => decimal.Parse(src.PrisPerLiter)))
                 .ForMember(dest => dest.RawMaterialDescription, opt => opt.MapFrom(src => src.RavarorBeskrivning))
                 .ForMember(dest => dest.StartOfSale, opt => opt.MapFrom(src => DateTime.Parse(src.Saljstart)));
+
+            CreateMap<ButikerOmbudButikOmbud, Store>()
+                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address4))
+                .ForMember(dest => dest.County, opt => opt.MapFrom(src => src.Address5))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Namn))
+                .ForMember(dest => dest.Number, opt => opt.MapFrom(src => src.Nr))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Telefon))
+                ;
         }
     }
 }

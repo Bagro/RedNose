@@ -20,9 +20,12 @@ namespace Updater
         
         public async Task DoWork()
         {
-            var artiklar = await _bolagetSource.GetData<artiklar>("https://www.systembolaget.se/api/assortment/products/xml");
-            var butikerOmbud = await _bolagetSource.GetData<ButikerOmbud>("https://www.systembolaget.se/api/assortment/stores/xml");
-            var butikArtikel = await _bolagetSource.GetData<ButikArtikel>("https://www.systembolaget.se/api/assortment/stock/xml");
+            var artiklarTask = _bolagetSource.GetData<artiklar>("https://www.systembolaget.se/api/assortment/products/xml");
+            var butikerOmbudTask = _bolagetSource.GetData<ButikerOmbud>("https://www.systembolaget.se/api/assortment/stores/xml");
+            var butikArtikelTask = _bolagetSource.GetData<ButikArtikel>("https://www.systembolaget.se/api/assortment/stock/xml");
+
+            artiklarTask.Wait();
+            artiklar artiklar = artiklarTask.Result;
 
             var product = _mapper.Map<List<Product>>(artiklar.artikel);
         }
