@@ -2,6 +2,7 @@ using System;
 using AutoMapper;
 using Schemas;
 using Updater.Entities;
+using Updater.Enum;
 
 namespace Updater.Profiles
 {
@@ -45,6 +46,12 @@ namespace Updater.Profiles
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Namn))
                 .ForMember(dest => dest.Number, opt => opt.MapFrom(src => src.Nr))
                 .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Telefon))
+                .ForMember(dest => dest.PostalCode, opt => opt.MapFrom(src => src.Address3))
+                .ForMember(dest => dest.SearchWords, opt => opt.MapFrom(src => src.SokOrd))
+                .ForMember(dest => dest.Services, opt => opt.MapFrom(src => src.Tjanster))
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address1))
+                .ForMember(dest => dest.StoreType, opt => opt.MapFrom(src => src is StoreAssortmentViewModel ? StoreType.Store : StoreType.Agent))
+                .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom<OpeningHoursResolver>())
                 ;
         }
     }
