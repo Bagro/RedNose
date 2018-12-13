@@ -51,8 +51,20 @@ namespace Updater.Profiles
                 .ForMember(dest => dest.Services, opt => opt.MapFrom(src => src.Tjanster))
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address1))
                 .ForMember(dest => dest.StoreType, opt => opt.MapFrom(src => src is StoreAssortmentViewModel ? StoreType.Store : StoreType.Agent))
-                .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom<OpeningHoursResolver>())
-                ;
+                .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom<OpeningHoursResolver>());
+
+            CreateMap<ButikerOmbudInfo, Store>()
+                .ForMember(dest => dest.City, opt => opt.Ignore())
+                .ForMember(dest => dest.County, opt => opt.Ignore())
+                .ForMember(dest => dest.Name, opt => opt.Ignore())
+                .ForMember(dest => dest.Number, opt => opt.Ignore())
+                .ForMember(dest => dest.Phone, opt => opt.Ignore())
+                .ForMember(dest => dest.PostalCode, opt => opt.Ignore())
+                .ForMember(dest => dest.SearchWords, opt => opt.Ignore())
+                .ForMember(dest => dest.Services, opt => opt.Ignore())
+                .ForMember(dest => dest.Street, opt => opt.Ignore())
+                .ForMember(dest => dest.StoreType, opt => opt.Ignore())
+                .ForMember(dest => dest.OpeningHours, opt => opt.Ignore());
         }
     }
 }

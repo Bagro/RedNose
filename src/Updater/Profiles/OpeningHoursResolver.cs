@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using Schemas;
 using Updater.Entities;
@@ -13,9 +11,14 @@ namespace Updater.Profiles
         {
             var openHoursList = new List<OpenHours>();
 
-            foreach (var oppetTid in source.Oppettider.Split(new char[] { '_', '*' }))
+            foreach (var oppetTid in source.Oppettider.Split('*'))
             {
                 var parts = oppetTid.Split(';');
+                if(parts.Length < 7)
+                {
+                    continue;
+                }
+
                 parts[1].Equals(parts[2]).Equals("00:00");
 
                 openHoursList.Add(new OpenHours
