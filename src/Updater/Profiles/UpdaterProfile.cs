@@ -65,6 +65,8 @@ namespace Updater.Profiles
                 .ForMember(dest => dest.Street, opt => opt.Ignore())
                 .ForMember(dest => dest.StoreType, opt => opt.Ignore())
                 .ForMember(dest => dest.OpeningHours, opt => opt.Ignore());
+
+            CreateMap<Product, ProductWithStores>().ForMember(dest => dest.Stores, opt => opt.Ignore());
         }
     }
 }

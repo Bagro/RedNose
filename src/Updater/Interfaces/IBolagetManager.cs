@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Updater.Bolaget.Entities;
 using Updater.Entities;
 
 namespace Updater.Interfaces
 {
-    public interface IBolagetRepository
+    public interface IBolagetManager
     {
         Task<List<Product>> GetProducts();
 
+        Task<List<ProductWithStores>> GetProductsWithStores();
+
         Task<List<Store>> GetStores();
 
-        Task<List<StoreProductsLink>> GetStoreProductsLinks();
+        Task<List<StoreWithProducts>> GetStoresWithProducts();
     }
 }

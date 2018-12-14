@@ -9,23 +9,16 @@ namespace Updater
 {
     public class Worker : IWorker
     {
-        private readonly IBolagetRepository _bolagetRepository;
+        private readonly IBolagetManager _bolagetManager;
 
-        public Worker(IBolagetRepository bolagetRepository)
+        public Worker(IBolagetManager bolagetManager)
         {
-            _bolagetRepository = bolagetRepository;
+            _bolagetManager = bolagetManager;
         }
 
         public async Task DoWork()
         {
-            var productsTask = _bolagetRepository.GetProducts();
-            var storesTask = _bolagetRepository.GetStores();
-
-            await productsTask;
-            List<Product> products = productsTask.Result;
-
-            await storesTask;
-            List<Store> stores = storesTask.Result;
+            var productWithStoreses = await _bolagetManager.GetProductsWithStores();
         }
     }
 }

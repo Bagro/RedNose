@@ -14,6 +14,8 @@ namespace Updater
                 .AddScoped<IBolagetSource, BolagetFileSource>()
                 .AddScoped<IDownloader<string>, BolagetFileDownloader>()
                 .AddScoped<IDeserializer, BolagetFilesDeserializer>()
+                .AddScoped<IBolagetRepository, BolagetRepository>()
+                .AddScoped<IBolagetManager, BolagetManager>()
                 .AddAutoMapper()
                 .BuildServiceProvider();
 
