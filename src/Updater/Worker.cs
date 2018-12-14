@@ -9,45 +9,23 @@ namespace Updater
 {
     public class Worker : IWorker
     {
-        private readonly IBolagetSource _bolagetSource;
-        private readonly IMapper _mapper;
+        private readonly IBolagetRepository _bolagetRepository;
 
-        public Worker(IBolagetSource bolagetSource, IMapper mapper)
+        public Worker(IBolagetRepository bolagetRepository)
         {
-            _bolagetSource = bolagetSource;
-            _mapper = mapper;
+            _bolagetRepository = bolagetRepository;
         }
 
         public async Task DoWork()
         {
-            var artiklarTask = _bolagetSource.GetData<artiklar>("https://www.systembolaget.se/api/assortment/products/xml");
-            var butikerOmbudTask = _bolagetSource.GetData<ButikerOmbud>("https://www.systembolaget.se/api/assortment/stores/xml");
-            var butikArtikelTask = _bolagetSource.GetData<ButikArtikel>("https://www.systembolaget.se/api/assortment/stock/xml");
+            var productsTask = _bolagetRepository.GetProducts();
+            var storesTask = _bolagetRepository.GetStores();
 
-            await artiklarTask;
-            artiklar artiklar = artiklarTask.Result;
-            await butikerOmbudTask;
-            ButikerOmbud butikerOmbud = butikerOmbudTask.Result;
+            await productsTask;
+            List<Product> products = productsTask.Result;
 
-            var products = _mapper.Map<List<Product>>(artiklar.artikel);
-            var stores = ParseStores(butikerOmbud);
-        }
-
-        private List<Store> ParseStores(ButikerOmbud butikerOmbud)
-        {
-            var stores = new List<Store>();
-
-            foreach (var item in butikerOmbud.Items)
-            {
-                if(!(item is StoreAssortmentViewModel || item is AgentAssortmentViewModel))
-                {
-                    continue;
-                }
-
-                stores.Add(_mapper.Map<Store>(item));
-            }
-
-            return stores;
+            await storesTask;
+            List<Store> stores = storesTask.Result;
         }
     }
 }
