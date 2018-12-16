@@ -10,15 +10,18 @@ namespace Updater
     public class Worker : IWorker
     {
         private readonly IBolagetManager _bolagetManager;
+        private readonly IProductStore _productStore;
 
-        public Worker(IBolagetManager bolagetManager)
+        public Worker(IBolagetManager bolagetManager, IProductStore productStore)
         {
             _bolagetManager = bolagetManager;
+            _productStore = productStore;
         }
 
         public async Task DoWork()
         {
-            var productWithStoreses = await _bolagetManager.GetProductsWithStores();
+            var products = await _bolagetManager.GetProducts();
+            _productStore.Save(products);
         }
     }
 }

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Updater.Entities;
 
 namespace Updater.Interfaces
 {
     public interface IProductStore
     {
-        void Save(List<Product> products);
+        Task Save(List<Product> products);
     }
 }

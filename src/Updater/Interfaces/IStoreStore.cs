@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Updater.Entities;
 
 namespace Updater.Interfaces
 {
     public interface IStoreStore
     {
-        void Save(List<Store> stores);
+        Task Save(List<Store> stores);
 
-        void SaveProductLinks(List<StoreProductsLink> storeProductsLinks);
+        Task SaveProductLinks(List<StoreProductsLink> storeProductsLinks);
     }
 }
