@@ -1,0 +1,1 @@
+CREATE SCHEMA `rednose` DEFAULT CHARACTER SET latin1 ;
