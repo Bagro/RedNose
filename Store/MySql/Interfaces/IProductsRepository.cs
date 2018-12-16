@@ -5,6 +5,6 @@ namespace Store.MySql.Interfaces
 {
     public interface IProductsRepository
     {
-        Task<bool> Save(Product product);
+        Task Save(Product product);
     }
 }
