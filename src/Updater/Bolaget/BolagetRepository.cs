@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Schemas;
-using Updater.Bolaget.Entities;
 using Updater.Entities;
 using Updater.Interfaces;
 

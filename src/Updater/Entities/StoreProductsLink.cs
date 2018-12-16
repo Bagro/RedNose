@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Updater.Bolaget.Entities
+namespace Updater.Entities
 {
     public class StoreProductsLink
     {

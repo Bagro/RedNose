@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Updater.Bolaget.Entities;
 using Updater.Entities;
 
 namespace Updater.Interfaces
