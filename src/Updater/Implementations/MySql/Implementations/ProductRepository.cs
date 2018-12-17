@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
@@ -11,19 +10,18 @@ namespace Updater.Implementations.MySql.Implementations
 {
     public class ProductRepository : IProductsRepository
     {
-        private readonly DataStoreSettings _dataStoreSettings;
         private readonly MySqlConnectionStringBuilder _mySqlConnectionStringBuilder;
 
         public ProductRepository(IOptions<DataStoreSettings> options)
         {
-            _dataStoreSettings = options.Value;
+            DataStoreSettings dataStoreSettings = options.Value;
 
             _mySqlConnectionStringBuilder = new MySqlConnectionStringBuilder
             {
-                Server = _dataStoreSettings.Server,
-                Database = _dataStoreSettings.Database,
-                UserID = _dataStoreSettings.UserId,
-                Password = _dataStoreSettings.Password
+                Server = dataStoreSettings.Server,
+                Database = dataStoreSettings.Database,
+                UserID = dataStoreSettings.UserId,
+                Password = dataStoreSettings.Password
             };
         }
 
@@ -36,7 +34,7 @@ namespace Updater.Implementations.MySql.Implementations
         }
 
         private async Task ExecuteSave(Product product, string query)
-        {Debug.WriteLine($"Saving product {product.Number} - {product.Name}");
+        {
             using (var connection = new MySqlConnection(_mySqlConnectionStringBuilder.ConnectionString))
             {
                 await connection.OpenAsync();
@@ -92,7 +90,7 @@ namespace Updater.Implementations.MySql.Implementations
                 command.Parameters.AddWithValue("@number", number);
 
                 var productCount = await command.ExecuteScalarAsync();
-                Debug.WriteLine($"Product check {number} found: {productCount}");
+
                 await connection.CloseAsync();
 
                 return Convert.ToInt32(productCount) == 1;

@@ -42,6 +42,7 @@ namespace Updater
                 .AddScoped<IProductStore, MySqlDataStore>()
                 .AddScoped<IStoreStore, MySqlDataStore>()
                 .AddScoped<IProductsRepository, ProductRepository>()
+                .AddScoped<IStoreRepository, StoreRepository>()
                 .AddAutoMapper()
                 .BuildServiceProvider();
 
