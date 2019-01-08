@@ -13,5 +13,7 @@ namespace Updater.Interfaces
         Task<List<Store>> GetStores();
 
         Task<List<StoreWithProducts>> GetStoresWithProducts();
+
+        Task<List<StoreProductsLink>> GetStoreProductsLinks();
     }
 }

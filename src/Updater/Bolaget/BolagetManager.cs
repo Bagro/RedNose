@@ -73,5 +73,10 @@ namespace Updater.Bolaget
         {
             throw new System.NotImplementedException();
         }
+
+        public async Task<List<StoreProductsLink>> GetStoreProductsLinks()
+        {
+            return await _bolagetRepository.GetStoreProductsLinks();
+        }
     }
 }

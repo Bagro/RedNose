@@ -46,17 +46,17 @@ namespace Updater.Implementations.MySql.Implementations
 
                 command.Parameters.AddWithValue("@number", store.Number);
                 command.Parameters.AddWithValue("@storeType", store.StoreType);
-                command.Parameters.AddWithValue("@name", store.Name);
-                command.Parameters.AddWithValue("@street", store.Street);
-                command.Parameters.AddWithValue("@postalCode", store.PostalCode);
-                command.Parameters.AddWithValue("@city", store.City);
-                command.Parameters.AddWithValue("@county", store.County);
-                command.Parameters.AddWithValue("@phone", store.Phone);
-                command.Parameters.AddWithValue("@services", store.Services);
+                command.Parameters.AddWithValue("@name", store.Name ?? string.Empty);
+                command.Parameters.AddWithValue("@street", store.Street ?? string.Empty);
+                command.Parameters.AddWithValue("@postalCode", store.PostalCode ?? string.Empty);
+                command.Parameters.AddWithValue("@city", store.City ?? string.Empty);
+                command.Parameters.AddWithValue("@county", store.County ?? string.Empty);
+                command.Parameters.AddWithValue("@phone", store.Phone ?? string.Empty);
+                command.Parameters.AddWithValue("@services", store.Services ?? string.Empty);
                 command.Parameters.AddWithValue("@searchWords", JsonConvert.SerializeObject(store.SearchWords));
                 command.Parameters.AddWithValue("@openingHours", JsonConvert.SerializeObject(store.OpeningHours));
-                command.Parameters.AddWithValue("@rt90x", store.Rt90x);
-                command.Parameters.AddWithValue("@rt90y", store.Rt90y);
+                command.Parameters.AddWithValue("@rt90x", store.Rt90x ?? string.Empty);
+                command.Parameters.AddWithValue("@rt90y", store.Rt90y ?? string.Empty);
                 command.Parameters.AddWithValue("@added", DateTime.UtcNow);
                 command.Parameters.AddWithValue("@updated", DateTime.UtcNow);
                 
@@ -73,7 +73,7 @@ namespace Updater.Implementations.MySql.Implementations
                 await connection.OpenAsync();
 
                 var command = connection.CreateCommand();
-                command.CommandText = "SELECT COUNT(*) FROM store WHERE number=@number";
+                command.CommandText = "SELECT COUNT(*) FROM stores WHERE number=@number";
                 command.Parameters.AddWithValue("@number", number);
 
                 var productCount = await command.ExecuteScalarAsync();
