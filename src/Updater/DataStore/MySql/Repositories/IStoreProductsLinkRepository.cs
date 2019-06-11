@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Updater.Entities;
 
-namespace Updater.Implementations.MySql.Interfaces
+namespace Updater.DataStore.MySql.Repositories
 {
     public interface IStoreProductsLinkRepository
     {

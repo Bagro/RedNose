@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Updater.DataStore.MySql.Repositories;
 using Updater.Entities;
-using Updater.Implementations.MySql.Interfaces;
 using Updater.Interfaces;
 
-namespace Updater.Implementations.MySql
+namespace Updater.DataStore.MySql
 {
     public class MySqlDataStore : IProductStore, IStoreStore
     {

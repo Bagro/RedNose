@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Updater.Entities;
 
-namespace Updater.Interfaces
+namespace Updater.Bolaget
 {
     public interface IBolagetManager
     {

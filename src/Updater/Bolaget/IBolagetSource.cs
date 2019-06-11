@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Updater.Interfaces
+namespace Updater.Bolaget
 {
     public interface IBolagetSource
     {

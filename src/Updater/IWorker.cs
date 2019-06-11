@@ -2,8 +2,8 @@ using System.Threading.Tasks;
 
 namespace Updater.Interfaces
 {
-    public interface IDownloader<T>
+    public interface IWorker
     {
-        Task<T> Download(string url);
+        Task DoWork();
     }
 }

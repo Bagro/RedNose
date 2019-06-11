@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
 using Updater.Entities;
-using Updater.Implementations.MySql.Interfaces;
 
-namespace Updater.Implementations.MySql.Implementations
+namespace Updater.DataStore.MySql.Repositories
 {
     public class ProductRepository : IProductsRepository
     {

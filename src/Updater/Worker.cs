@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Schemas;
+using Updater.Bolaget;
+using Updater.DataStore;
 using Updater.Entities;
 using Updater.Interfaces;
 

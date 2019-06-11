@@ -5,9 +5,8 @@ using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Updater.Entities;
-using Updater.Implementations.MySql.Interfaces;
 
-namespace Updater.Implementations.MySql.Implementations
+namespace Updater.DataStore.MySql.Repositories
 {
     public class StoreRepository : IStoreRepository
     {

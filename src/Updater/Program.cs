@@ -4,10 +4,10 @@ using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Updater.Bolaget;
+using Updater.DataStore;
+using Updater.DataStore.MySql;
+using Updater.DataStore.MySql.Repositories;
 using Updater.Entities;
-using Updater.Implementations.MySql;
-using Updater.Implementations.MySql.Implementations;
-using Updater.Implementations.MySql.Interfaces;
 using Updater.Interfaces;
 
 namespace Updater

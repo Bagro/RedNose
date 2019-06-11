@@ -1,4 +1,4 @@
-namespace Updater.Interfaces
+namespace Updater.Bolaget
 {
     public interface IDeserializer
     {
